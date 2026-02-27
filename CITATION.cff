@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "De Vries"
+  given-names: "Ingmar Engbert Jacob"
+  orcid: "https://orcid.org/0000-0002-0174-7320"
+- family-names: "De Lange"
+  given-names: "Floris P"
+  orcid: "https://orcid.org/0000-0002-6730-1452"
+- family-names: "Wurm"
+  given-names: "Moritz Franz"
+  orcid: "https://orcid.org/0000-0003-4358-9815"
+title: "Hierarchical priors enable neural prediction of perceived biological motion"
+version: 1.0.0
+doi: under construction
+date-released: under construction
+url: "https://github.com/Ingmar-de-Vries/HierarchicalPriors"
