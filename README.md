@@ -15,7 +15,7 @@ The code in this repository allows for exact replication of the dRSA pipeline as
 For details regarding this experiment, stimuli and analysis code, please see methods section of the article. Please contact me for any further questions at i.e.j.de.vries@gmail.com or ingmar.devries@unitn.it
 
 Note that the larger data files belonging to this repository are stored on a public OSF repository (DOI: TBD; or look for Ingmar de Vries - HierarchicalPriors). The OSF repository includes: 
-  - MEG data. See more information in the "dataset_readme.txt" file included in this repository. 
+  - MEG data of 1 example participant to test this code. See more information in the "dataset_readme.txt" file included in this repository. 
   - The 18 model RDMs used in the reported study (9 for the normal and inverted conditions, 9 for the scrambled condition).
 
 Note that this custom-written code uses several functions from the Brainstorm (tested version: 3) and Fieldtrip (tested version: 20191113) toolboxes, and was written and tested in Matlab 2023b.  
