@@ -39,53 +39,49 @@ The code in this GitHub repository is structured as follows:
   -	Pre-processing of MEG and eyetracking data
     - Pre-processing of eyetracking data was done using custom written script "HierarchicalPriors_eyetracking_asc2ft.m", which takes raw Eyelink data in asc format as input, and gives pre-processed eyetracking data in Fieldtrip format as output. This is subsequently used to create an eyetracker RDM per individual subject. 
     - Pre-processing of MEG data was done using the Brainstorm toolbox version 3 using GUI operations, which were transformed into Matlab scripts where possible. The following scripts are located in the subdirectory “preprocessing”:
-      - "DynamicPredictions_MEGpp1_PSDcheck.m" - initial sanity/quality check of powerspectra. Can be skipped as this will be done after filters anyway. 
-      - "DynamicPredictions_MEGpp2_addEvents.m" - read events from trigger channel and give appropriate names.
-      - "DynamicPredictions_MEGpp3_addPTBevents.m" - not necessary to use this, check comments in script for details.
-      - "DynamicPredictions_MEGpp4_checkVidOnset.m" - only sometimes necessary, i.e., sometimes triggers were erroneously stored double. If that's the case, this script helps finding those duplicates so they can be removed manually in Brainstorm GUI. But only happened in rare cases. 
-      - "DynamicPredictions_MEGpp5_filters.m" - notch filter, downsample, and create powerspectra for sanity check.
-      - "DynamicPredictions_MEGpp6_ICA.m" - run ICA for ocular and cardiac artifacts, separately for magneto- and gradiometers.
-      - "DynamicPredictions_MEGpp7_detectArtifacts.m" - I skipped this step, because I opted for manual artifact detection after epoching. 
-      - "DynamicPredictions_MEGpp8_epoch_singletrialDCcorrection.m" - epoch and single-trial baseline correction.
-      - "DynamicPredictions_MEGpp9_export2FT.m" - export from Brainstorm to Fieldtrip format.
-      - "DynamicPredictions_MEGpp10_realign2photodiode.m" - realign single trials to photodiode. This script is called from MEGpp9. 
-      - "DynamicPredictions_MEGppSource1_computeInversionKernel.m" - apply minimum norm estimation (MNE) and store resulting inversion kernel to transform sensor level data to source level data outside of Brainstorm (which I do in the main dynamic RSA analysis script). 
-      - "DynamicPredictions_storeManualBadTrials.m" - store manually detected bad trials, see script for comments
+      - "HierarchicalPriors_MEGpp1_PSDcheck.m" - initial sanity/quality check of powerspectra. Can be skipped as this will be done after filters anyway. 
+      - "HierarchicalPriors_MEGpp2_addEvents.m" - read events from trigger channel and give appropriate names.
+      - "HierarchicalPriors_MEGpp3_addPTBevents.m" - not necessary to use this, check comments in script for details.
+      - "HierarchicalPriors_MEGpp4_checkVidOnset.m" - only sometimes necessary, i.e., sometimes triggers were erroneously stored double. If that's the case, this script helps finding those duplicates so they can be removed manually in Brainstorm GUI. But only happened in rare cases. 
+      - "HierarchicalPriors_MEGpp5_filters.m" - notch filter, downsample, and create powerspectra for sanity check.
+      - "HierarchicalPriors_MEGpp6_ICA.m" - run ICA for ocular and cardiac artifacts, separately for magneto- and gradiometers.
+      - "HierarchicalPriors_MEGpp7_detectArtifacts.m" - I skipped this step, because I opted for manual artifact detection after epoching. 
+      - "HierarchicalPriors_MEGpp8_epoch_singletrialDCcorrection.m" - epoch and single-trial baseline correction.
+      - "HierarchicalPriors_MEGpp9_export2FT.m" - export from Brainstorm to Fieldtrip format.
+      - "HierarchicalPriors_MEGpp10_realign2photodiode.m" - realign single trials to photodiode. This script is called from MEGpp9. 
+      - "HierarchicalPriors_MEGppSource1_computeInversionKernel.m" - apply minimum norm estimation (MNE) and store resulting inversion kernel to transform sensor level data to source level data outside of Brainstorm (which I do in the main dynamic RSA analysis script). 
+      - "HierarchicalPriors_storeManualBadTrials.m" - store manually detected bad trials, see script for comments
 
   -	Create model RDMs
-    - The 9 model RDMs themselves can be found in the OSF repository. 
-    - RDMs based on video data, kinematic marker data, and eyetracker data are created outside of the main "DynamicPredictions_ERFdynamicRSA_ROIsource.m" script (see section "Run dRSA analysis" below), and if necessary up- or downsampled to 100 Hz. The pre-created RDMs therefore have size 14x14x500x500 (i.e., stim1 x stim2 x timestim1 x timestim2). This is done to save computation time in the dRSA pipeline, i.e., the RDMs only need to be loaded in, not computed each time the dRSA script is run. 
+    - The 18 model RDMs themselves can be found in the OSF repository. 
+    - RDMs based on video data, kinematic marker data, and eyetracker data are created outside of the main "HierarchicalPriors_dRSA.m" script (see section "Run dRSA analysis" below), and if necessary up- or downsampled to 100 Hz. The pre-created RDMs therefore have size 14x14x500x500 (i.e., stim1 x stim2 x timestim1 x timestim2). This is done to save computation time in the dRSA pipeline, i.e., the RDMs only need to be loaded in, not computed each time the dRSA script is run. 
     - In the "modelRDMs" subdirectory, you'll find the following scripts:
-      - "DynamicPredictions_DynamicModelRDMs_eyeTracker.m" - create dynamic RDM of individual subject eyetracking data.
-      - "DynamicPredictions_DynamicModelRDMs_pixelwise.m" - create dynamic RDM of smoothed grayscale pixelwise luminance values. 
-      - "DynamicPredictions_video2vector.m" - create smoothed grayscale vector representation of videos. Called from "DynamicPredictions_DynamicModelRDMs_pixelwise.m".
-      - "DynamicPredictions_DynamicModelRDMs_opticalflow.m" - create dynamic RDM of optical flow vectors.
-      - "DynamicPredictions_video2opticalflow.m" - create optical flow vector representation of videos. Called from "DynamicPredictions_DynamicModelRDMs_opticalflow.m".
-      - "DynamicPredictions_DynamicModelRDMs_kinematic.m" - create 6 dynamic RDMs of kinematic marker data, i.e., view-dependent and view-invariant posture, motion and acceleration.
-      - "procrustes_constrain_rotationZaxis_IdV.m" - modified version of Matlab's procrustes.m, which now constrains rotation to vertical (Z) axis, because that is how we define viewpoint invariant body posture, motion and acceleration. Note that my modified version is correct, but currently very time inefficient, effectively more than doubling the total computation time. This was a later modification and I'm sure I can find a much faster implementation. Feel free to have a look in the script and suggest a faster implementation! Called from "DynamicPredictions_DynamicModelRDMs_kinematic.m".
-      - "DynamicPredictions_exampleFigureModels.m" - plots illustrations of the different models for a single frame of 2 videos. It was used for creating Figure 5 in the article. This script also contains information about where each of the 13 kinematic markers were located on the ballet dancer's body.
+      - "HierarchicalPriors_DynamicModelRDMs_eyeTracker.m" - create dynamic RDM of individual subject eyetracking data.
+      - "HierarchicalPriors_DynamicModelRDMs_pixelwise.m" - create dynamic RDM of smoothed grayscale pixelwise luminance values. 
+      - "HierarchicalPriors_video2vector.m" - create smoothed grayscale vector representation of videos. Called from "DynamicPredictions_DynamicModelRDMs_pixelwise.m".
+      - "HierarchicalPriors_DynamicModelRDMs_opticalflow.m" - create dynamic RDM of optical flow vectors.
+      - "HierarchicalPriors_video2opticalflow.m" - create optical flow vector representation of videos. Called from "DynamicPredictions_DynamicModelRDMs_opticalflow.m".
+      - "HierarchicalPriors_DynamicModelRDMs_kinematic.m" - create 6 dynamic RDMs of kinematic marker data, i.e., view-dependent and view-invariant posture, motion and acceleration.
+      - "procrustes_constrain_rotationZaxis_IdV.m" - modified version of Matlab's procrustes.m, which now constrains rotation to vertical (Z) axis, because that is how we define viewpoint invariant body posture, motion and acceleration. Note that my modified version is correct, but currently very time inefficient, effectively more than doubling the total computation time. This was a later modification and I'm sure I can find a much faster implementation. Feel free to have a look in the script and suggest a faster implementation! Called from "HierarchicalPriors_DynamicModelRDMs_kinematic.m".
+      - "HierarchicalPriors_exampleFigureModels.m" - plots illustrations of the different models for a single frame of 2 videos. It was used for creating Figure S4 in the article. This script also contains information about where each of the 13 kinematic markers were located on the ballet dancer's body.
 
   - Run dRSA analysis, statistics, and plotting
     - In the "dynamicRSA" subdirectory, you'll find the following scripts:
-      - "DynamicPredictions_pipeline.m" - the main analysis pipeline from which all other functions are called.
+      - "HierarchicalPriors_master_dRSA.m" - the main analysis pipeline from which all other functions are called.
       - "cluster_shell.m" - used for sending analysis as parallel jobs to a computing cluster (e.g., with different subjects and ROIs in parallel).
-      - "DynamicPredictions_defineSourceROIs.m" - create ROIs based on (combinations of) parcels of HCP atlas.
-      - "DynamicPredictions_checkAtlases.m" - just sanity check that correct atlas and inversion kernel will be selected in main analysis
-      - "DynamicPredictions_RUN_ERFdynamicRSA_ROIsource.m" - main analysis script, which is called from "DynamicPredictions_pipeline.m"
-      - "regressionBorderPerModel_smRDM30msec.mat" - file containing regression borders used to regress out model itself to attenuate effects of model autocorrelation. These borders are determined by the simulations (see methods section in article and explanation in "DynamicPredictions_ERFdynamicRSA_ROIsource.m" for details). 
-      - "DynamicPredictions_STATS_ERFdynamicRSA_ROIsource.m" - run statistics on ROI-based dRSA results, and compute peak latency and representational spread (RS) index. This function is called from main script "DynamicPredictions_pipeline.m". 
+      - "HierarchicalPriors_defineSourceROIs.m" - create ROIs based on (combinations of) parcels of HCP atlas.
+      - "HierarchicalPriors_checkAtlases.m" - just sanity check that correct atlas and inversion kernel will be selected in main analysis
+      - "HierarchicalPriors_dRSA.m" - main analysis script, which is called from "HierarchicalPriors_master_dRSA.m"
+      - "regressionBorderPerModel_smRDM30msec.mat" - file containing regression borders used to regress out model itself to attenuate effects of model autocorrelation. These borders are determined by the simulations (see methods section in article and explanation in "HierarchicalPriors_dRSA.m" for details). 
+      - "HierarchicalPriors_STATS_ERFdynamicRSA_ROIsource.m" - run statistics on ROI-based dRSA results, and compute peak latency and representational spread (RS) index. This function is called from main script "DynamicPredictions_pipeline.m". 
       - "modelautocorr_slopes.mat" - file containing dRSA curves resulting from PCR on simulated data. This is used to compute the representational spread (RS) index (see methods section in article and explanation in "DynamicPredictions_STATS_ERFdynamicRSA_ROIsource.m" for details).
-      - "DynamicPredictions_runFTstats.m" - shell around Fieldtrip functions for running cluster-based permutation tests on 2D dRSA matrix or on averaged dRSA lag-plot. This function is called from "DynamicPredictions_STATS_ERFdynamicRSA_ROIsource.m". See scripts for details. 
-      - "DynamicPredictions_PLOTS_ERFdynamicRSA_ROIsource.m" - plot ROI-based results, in article: figure 2a, 3, and S1.
+      - "HierarchicalPriors_runFTstats.m" - shell around Fieldtrip functions for running cluster-based permutation tests on 2D dRSA matrix or on averaged dRSA lag-plot. This function is called from "HierarchicalPriors_STATS_ERFdynamicRSA_ROIsource.m". See scripts for details. 
+      - "HierarchicalPriors_PLOTS_dRSA.m" - plot ROI-based results, in article: figure 2a, 3, and S1.
       - "brewermap.m" - creates nice colormaps that are colorblind friendly. Not my code, for all colormaps and source code see: https://colorbrewer2.org/
       - "boundedline.m" - creates nice shading around lines, e.g., with a measure of distribution across subjects (here standard error). Not my code, for source code see https://github.com/kakearney/boundedline-pkg
-      - "DynamicPredictions_RUN_ERFdynamicRSA_searchlight.m" - searchlight analysis, which is called from "DynamicPredictions_pipeline.m"
-      - "DynamicPredictions_STATS_ERFdynamicRSA_searchlight.m" - statistics on searchlight analysis. 
-      - "fdr_bh.m" - FDR correction for statistics on searchlight analysis. This function is called in "DynamicPredictions_STATS_ERFdynamicRSA_searchlight.m"
-      - "DynamicPredictions_PLOTS_ERFdynamicRSA_searchlight.m" - plot searchlight results, in article: figure 2b. Note that this is done partly using the Brainstorm GUI to create pretty cortical map figures. Go through this script line-by-line and read the comments if you want to create similar figures. 
 
 - Run dRSA simulations, and plotting
-  - Note that the simulations are also called from the main "DynamicPredictions_pipeline.m" script. In the "simulations" subdirectory, you'll find the following scripts:
+  - Note that the simulations are also called from the main "HierarchicalPriors_master_dRSA.m" script. In the "simulations" subdirectory, you'll find the following scripts:
     - "cluster_shell_simulations.m" - used for sending analysis as parallel jobs to a computing cluster (e.g., with different subjects and ROIs in parallel).
-    - "DynamicPredictions_RUN_ERFdynamicRSA_simulations.m" - run simulations.
-    - "DynamicPredictions_PLOTS_ERFdynamicRSA_simulations.m" - plot simulations. 
+    - "DHierarchicalPriors_dRSA_simulations.m" - run simulations.
+    - "HierarchicalPriors_PLOTS_dRSA_simulations.m" - plot simulations. 
