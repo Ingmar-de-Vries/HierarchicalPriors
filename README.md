@@ -48,11 +48,10 @@ The code in this GitHub repository is structured as follows:
     - The rest of the MEG pre-processing was done using the Brainstorm toolbox version 3 using GUI operations, which were transformed into Matlab scripts where possible:
       - "HierarchicalPriors_PP3_CAT12segmentation.m" - segments MRI scans into cortical surface with 15000 sources using CAT12 in Brainstorm.
       - "HierarchicalPriors_PP4_importRAW.m" - import (or better: link to) raw MEG data, and refine MEG-MRI co-registration with extra head points. 
-      - "HierarchicalPriors_MEGpp1_PSDcheck.m" - initial sanity/quality check of powerspectra. Can be skipped as this will be done after filters anyway. 
-      - "HierarchicalPriors_MEGpp2_addEvents.m" - read events from trigger channel and give appropriate names.
-      - "HierarchicalPriors_MEGpp3_addPTBevents.m" - not necessary to use this, check comments in script for details.
-      - "HierarchicalPriors_MEGpp4_checkVidOnset.m" - only sometimes necessary, i.e., sometimes triggers were erroneously stored double. If that's the case, this script helps finding those duplicates so they can be removed manually in Brainstorm GUI. But only happened in rare cases. 
-      - "HierarchicalPriors_MEGpp5_filters.m" - notch filter, downsample, and create powerspectra for sanity check.
+      - "HierarchicalPriors_PP5_addEvents.m" - read events from trigger channel and give appropriate names.
+      - "HierarchicalPriors_PP6_addPTBevents.m" - not necessary to use this, check comments in script for details.
+      - "HierarchicalPriors_PP7_checkVidOnset.m" - only sometimes necessary, i.e., sometimes triggers were erroneously stored double. If that's the case, this script helps finding those duplicates so they can be removed manually in Brainstorm GUI. But only happened in very rare cases. 
+      - "HierarchicalPriors_PP8_filters.m" - notch filter, downsample, and create powerspectra for sanity check.
       - "HierarchicalPriors_MEGpp6_ICA.m" - run ICA for ocular and cardiac artifacts, separately for magneto- and gradiometers.
       - "HierarchicalPriors_MEGpp7_detectArtifacts.m" - I skipped this step, because I opted for manual artifact detection after epoching. 
       - "HierarchicalPriors_MEGpp8_epoch_singletrialDCcorrection.m" - epoch and single-trial baseline correction.
