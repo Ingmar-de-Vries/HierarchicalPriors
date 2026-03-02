@@ -35,7 +35,7 @@ The code in this GitHub repository is structured as follows:
   - Analysis and plotting of behavioural results
     - In the "behaviour" subdirectory, you will find the following script:
       - "HierarchicalPriors_BehaviouralAnalysis.m" - behavioural analysis and plotting of Figure 1d.
-      - helper functions?
+      - plotSpread helper functions for nice scatter plots.
 
   -	Pre-processing of MEG and eyetracking data
     - Pre-processing of eyetracking data was done using custom written script "HierarchicalPriors_eyetracking_asc2ft.m", which takes raw Eyelink data in asc format as input, and gives pre-processed eyetracking data in Fieldtrip format as output. This is subsequently used to create an eyetracker RDM per individual subject. 
