@@ -38,7 +38,7 @@ The code in this GitHub repository is structured as follows:
       - plotSpread helper functions for nice scatter plots.
 
   -	Pre-processing of MEG and eyetracking data
-    - Pre-processing of eyetracking data was done using custom written script "HierarchicalPriors_eyetracking_asc2ft.m", which takes raw Eyelink data in asc format as input, and gives pre-processed eyetracking data in Fieldtrip format as output. This is subsequently used to create an eyetracker RDM per individual subject.
+    - Pre-processing of eyetracking data was done using custom written script "HierarchicalPriors_PP0_eyetracking_asc2ft.m", which takes raw Eyelink data in asc format as input, and gives pre-processed eyetracking data in Fieldtrip format as output. This is subsequently used to create an eyetracker RDM per individual subject.
     - The first 2 MEG pre-processing steps were done using custom MNE-python scripts located in the subdirectory "preprocessing":
       - "HierarchicalPriors_PP1_headPositionHistory.py" - finds the run with the middle head position to spatially realign the other runs to during Maxfiltering.
       - "HierarchicalPriors_PP2_badchannels.py" - automatic bad channel detection of up to a maximum of 12 bad channels, which were interpolated during Maxfiltering.
