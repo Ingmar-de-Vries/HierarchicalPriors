@@ -18,7 +18,7 @@ Note that the larger data files belonging to this repository are stored on a pub
   - MEG data of 1 example participant to test this code. See more information in the "dataset_readme.txt" file included in this repository. 
   - The 18 model RDMs used in the reported study (9 for the normal and inverted conditions, 9 for the scrambled condition).
 
-Note that this custom-written code uses several functions from the Brainstorm (tested version: 3) and Fieldtrip (tested version: 20191113) toolboxes, and was written and tested in Matlab 2023b.  
+Note that this custom-written code uses several functions from the Brainstorm (tested version: 3) and Fieldtrip (tested version: 20191113) toolboxes, and was written and tested in Matlab 2023b. Additionally, the first 2 MEG preprocessing steps made use of MNE-python (for automatic bad channel detection using MNE python’s find_bad_channels_maxwell algorithm and for detecting the middle run (in terms of head location) to which to spatially realign the other runs to during MaxFiltering), after which Maxfiltering was applied using Neuromag’s MaxFilter implementation (version 2.2) of Signal Source Separation (SSS). 
 
 The code in this GitHub repository is structured as follows:
 
@@ -38,7 +38,12 @@ The code in this GitHub repository is structured as follows:
       - plotSpread helper functions for nice scatter plots.
 
   -	Pre-processing of MEG and eyetracking data
-    - Pre-processing of eyetracking data was done using custom written script "HierarchicalPriors_eyetracking_asc2ft.m", which takes raw Eyelink data in asc format as input, and gives pre-processed eyetracking data in Fieldtrip format as output. This is subsequently used to create an eyetracker RDM per individual subject. 
+    - Pre-processing of eyetracking data was done using custom written script "HierarchicalPriors_eyetracking_asc2ft.m", which takes raw Eyelink data in asc format as input, and gives pre-processed eyetracking data in Fieldtrip format as output. This is subsequently used to create an eyetracker RDM per individual subject.
+    - The first 2 MEG pre-processing steps were done using custom MNE-python scripts located in the subdirectory "preprocessing":
+      - "HierarchicalPriors_headPositionHistory.py" - finds the run with the middle head position to spatially realign the other runs to during Maxfiltering.
+      - "HierarchicalPriors_PP1_badchannels.py" - automatic bad channel detection of up to a maximum of 12 bad channels, which were interpolated during Maxfiltering.
+      - "ct_sparse.fif" - crosstalk file needed for the automatic bad channel detection and Maxfiltering.
+      - "sss_cal_3045_180914_upright.dat" - calibration file needed for the automatic bad channel detection and Maxfiltering.  
     - Pre-processing of MEG data was done using the Brainstorm toolbox version 3 using GUI operations, which were transformed into Matlab scripts where possible. The following scripts are located in the subdirectory “preprocessing”:
       - "HierarchicalPriors_MEGpp1_PSDcheck.m" - initial sanity/quality check of powerspectra. Can be skipped as this will be done after filters anyway. 
       - "HierarchicalPriors_MEGpp2_addEvents.m" - read events from trigger channel and give appropriate names.
