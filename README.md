@@ -34,7 +34,7 @@ The code in this GitHub repository is structured as follows:
    
   - Analysis and plotting of behavioural results
     - In the "behaviour" subdirectory, you will find the following script:
-      - "HierarchicalPriors_AnalysisBehaviourCatchTrials.m" - behavioural analysis and plotting of Figure 1d.
+      - "HierarchicalPriors_BehaviouralAnalysis.m" - behavioural analysis and plotting of Figure 1d.
       - helper functions?
 
   -	Pre-processing of MEG and eyetracking data
