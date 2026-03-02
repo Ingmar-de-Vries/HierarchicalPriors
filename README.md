@@ -51,8 +51,8 @@ The code in this GitHub repository is structured as follows:
       - "HierarchicalPriors_PP5_addEvents.m" - read events from trigger channel and give appropriate names.
       - "HierarchicalPriors_PP6_checkVidOnset.m" - only sometimes necessary, i.e., sometimes triggers were erroneously stored double. If that's the case, this script helps finding those duplicates so they can be removed manually in Brainstorm GUI. But only happened in very rare cases. 
       - "HierarchicalPriors_PP7_filters.m" - notch filter, downsample, and create powerspectra for sanity check.
-      - "HierarchicalPriors_MEGpp6_ICA.m" - run ICA for ocular and cardiac artifacts, separately for magneto- and gradiometers.
-      - "HierarchicalPriors_MEGpp7_detectArtifacts.m" - I skipped this step, because I opted for manual artifact detection after epoching. 
+      - "HierarchicalPriors_PP8_ICA.m" - run ICA for ocular and cardiac artifacts, separately for magneto- and gradiometers.
+      - "HierarchicalPriors_PP9_detectArtifacts.m" - automatic bad segment detection based on large amplitude at low frequency (1-7 Hz, i.e., blinks, movements, etc.), or high frequency (40-240 Hz; i.e., muscle activity) 
       - "HierarchicalPriors_MEGpp8_epoch_singletrialDCcorrection.m" - epoch and single-trial baseline correction.
       - "HierarchicalPriors_MEGpp9_export2FT.m" - export from Brainstorm to Fieldtrip format.
       - "HierarchicalPriors_MEGpp10_realign2photodiode.m" - realign single trials to photodiode. This script is called from MEGpp9. 
