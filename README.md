@@ -53,7 +53,7 @@ The code in this GitHub repository is structured as follows:
       - "HierarchicalPriors_PP7_filters.m" - notch filter, downsample, and create powerspectra for sanity check.
       - "HierarchicalPriors_PP8_ICA.m" - run ICA for ocular and cardiac artifacts, separately for magneto- and gradiometers.
       - "HierarchicalPriors_PP9_detectArtifacts.m" - automatic bad segment detection based on large amplitude at low frequency (1-7 Hz, i.e., blinks, movements, etc.), or high frequency (40-240 Hz; i.e., muscle activity) 
-      - "HierarchicalPriors_PP10_epoch_singletrialDCcorrection.m" - epoch and single-trial baseline correction.
+      - "HierarchicalPriors_PP10_epoch_singletrialDCcorrection.m" - epoch and single-trial baseline correction. Here there's also a visual inspection to check whether the automatically detected trials should indeed all be removed, e.g., sometimes a bad segment is in our padding windows, or might not be bad in our eyes. Those can be marked here.
       - "HierarchicalPriors_PP11_export2FT.m" - export from Brainstorm to Fieldtrip format.
       - "HierarchicalPriors_PP12_realign2photodiode.m" - realign single trials to photodiode. This script is called from PP11. 
       - "HierarchicalPriors_PP13_computeInversionKernel.m" - apply minimum norm estimation (MNE) and store resulting inversion kernel to transform sensor level data to source level data outside of Brainstorm (which I do in the main dynamic RSA analysis script). 
