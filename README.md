@@ -38,7 +38,7 @@ The code in this GitHub repository is structured as follows:
       - plotSpread helper functions for nice scatter plots.
 
   -	Pre-processing of MEG and eyetracking data
-    - Pre-processing of eyetracking data was done using custom written script "HierarchicalPriors_PP0_eyetracking_asc2ft.m", which takes raw Eyelink data in asc format as input, and gives pre-processed eyetracking data in Fieldtrip format as output. This is subsequently used to create an eyetracker RDM per individual subject.
+    - Pre-processing of eyetracking data was done using custom written script "HierarchicalPriors_PP0_eyetracking_asc2ft.m", which takes raw Eyelink data in asc format as input, and gives pre-processed eyetracking data in Fieldtrip format as output. This is subsequently used to create an eyetracker RDM per individual subject (see RDM section below). The folder also contains a script called "HierarchicalPriors_eyetracking_missingsamples.m" that counts the total amount of missing samples in the eyetracker data to report this information in the manuscript.
     - The first 2 MEG pre-processing steps were done using custom MNE-python scripts located in the subdirectory "preprocessing":
       - "HierarchicalPriors_PP1_headPositionHistory.py" - finds the run with the middle head position to spatially realign the other runs to during Maxfiltering.
       - "HierarchicalPriors_PP2_badchannels.py" - automatic bad channel detection of up to a maximum of 12 bad channels, which were interpolated during Maxfiltering.
@@ -46,6 +46,7 @@ The code in this GitHub repository is structured as follows:
       - "sss_cal_3045_180914_upright.dat" - calibration file needed for the automatic bad channel detection and Maxfiltering.
     - After this Maxfiltering was applied using Neuromag's MaxFilter implementation (version 2.2) of Signal Source Separation (SSS) provided by Elekta Neuromag (MEGIN).  
     - The rest of the MEG pre-processing was done using the Brainstorm toolbox version 3 using GUI operations, which were transformed into Matlab scripts where possible:
+      - "HierarchicalPriors_PP3_CAT12segmentation.m" - segments MRI scans into cortical surface with 15000 sources using CAT12 in Brainstorm.
       - "HierarchicalPriors_MEGpp1_PSDcheck.m" - initial sanity/quality check of powerspectra. Can be skipped as this will be done after filters anyway. 
       - "HierarchicalPriors_MEGpp2_addEvents.m" - read events from trigger channel and give appropriate names.
       - "HierarchicalPriors_MEGpp3_addPTBevents.m" - not necessary to use this, check comments in script for details.
