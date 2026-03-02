@@ -47,6 +47,7 @@ The code in this GitHub repository is structured as follows:
     - After this Maxfiltering was applied using Neuromag's MaxFilter implementation (version 2.2) of Signal Source Separation (SSS) provided by Elekta Neuromag (MEGIN).  
     - The rest of the MEG pre-processing was done using the Brainstorm toolbox version 3 using GUI operations, which were transformed into Matlab scripts where possible:
       - "HierarchicalPriors_PP3_CAT12segmentation.m" - segments MRI scans into cortical surface with 15000 sources using CAT12 in Brainstorm.
+      - "HierarchicalPriors_PP4_importRAW.m" - import (or better: link to) raw MEG data, and refine MEG-MRI co-registration with extra head points. 
       - "HierarchicalPriors_MEGpp1_PSDcheck.m" - initial sanity/quality check of powerspectra. Can be skipped as this will be done after filters anyway. 
       - "HierarchicalPriors_MEGpp2_addEvents.m" - read events from trigger channel and give appropriate names.
       - "HierarchicalPriors_MEGpp3_addPTBevents.m" - not necessary to use this, check comments in script for details.
