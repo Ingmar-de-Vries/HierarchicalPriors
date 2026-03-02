@@ -40,19 +40,19 @@ The code in this GitHub repository is structured as follows:
   -	Pre-processing of MEG and eyetracking data
     - Pre-processing of eyetracking data was done using custom written script "HierarchicalPriors_PP0_eyetracking_asc2ft.m", which takes raw Eyelink data in asc format as input, and gives pre-processed eyetracking data in Fieldtrip format as output. This is subsequently used to create an eyetracker RDM per individual subject (see RDM section below). The folder also contains a script called "HierarchicalPriors_eyetracking_missingsamples.m" that counts the total amount of missing samples in the eyetracker data to report this information in the manuscript.
     - The first 2 MEG pre-processing steps were done using custom MNE-python scripts located in the subdirectory "preprocessing":
-      - "HierarchicalPriors_PP1_headPositionHistory.py" - finds the run with the middle head position to spatially realign the other runs to during Maxfiltering.
-      - "HierarchicalPriors_PP2_badchannels.py" - automatic bad channel detection of up to a maximum of 12 bad channels, which were interpolated during Maxfiltering.
+      - "HierarchicalPriors_PP01_headPositionHistory.py" - finds the run with the middle head position to spatially realign the other runs to during Maxfiltering.
+      - "HierarchicalPriors_PP02_badchannels.py" - automatic bad channel detection of up to a maximum of 12 bad channels, which were interpolated during Maxfiltering.
       - "ct_sparse.fif" - crosstalk file needed for the automatic bad channel detection and Maxfiltering.
       - "sss_cal_3045_180914_upright.dat" - calibration file needed for the automatic bad channel detection and Maxfiltering.
     - After this Maxfiltering was applied using Neuromag's MaxFilter implementation (version 2.2) of Signal Source Separation (SSS) provided by Elekta Neuromag (MEGIN).  
     - The rest of the MEG pre-processing was done using the Brainstorm toolbox version 3 using GUI operations, which were transformed into Matlab scripts where possible:
-      - "HierarchicalPriors_PP3_CAT12segmentation.m" - segments MRI scans into cortical surface with 15000 sources using CAT12 in Brainstorm.
-      - "HierarchicalPriors_PP4_importRAW.m" - import (or better: link to) raw MEG data, and refine MEG-MRI co-registration with extra head points. 
-      - "HierarchicalPriors_PP5_addEvents.m" - read events from trigger channel and give appropriate names.
-      - "HierarchicalPriors_PP6_checkVidOnset.m" - only sometimes necessary, i.e., sometimes triggers were erroneously stored double. If that's the case, this script helps finding those duplicates so they can be removed manually in Brainstorm GUI. But only happened in very rare cases. 
-      - "HierarchicalPriors_PP7_filters.m" - notch filter, downsample, and create powerspectra for sanity check.
-      - "HierarchicalPriors_PP8_ICA.m" - run ICA for ocular and cardiac artifacts, separately for magneto- and gradiometers.
-      - "HierarchicalPriors_PP9_detectArtifacts.m" - automatic bad segment detection based on large amplitude at low frequency (1-7 Hz, i.e., blinks, movements, etc.), or high frequency (40-240 Hz; i.e., muscle activity) 
+      - "HierarchicalPriors_PP03_CAT12segmentation.m" - segments MRI scans into cortical surface with 15000 sources using CAT12 in Brainstorm.
+      - "HierarchicalPriors_PP04_importRAW.m" - import (or better: link to) raw MEG data, and refine MEG-MRI co-registration with extra head points. 
+      - "HierarchicalPriors_PP05_addEvents.m" - read events from trigger channel and give appropriate names.
+      - "HierarchicalPriors_PP06_checkVidOnset.m" - only sometimes necessary, i.e., sometimes triggers were erroneously stored double. If that's the case, this script helps finding those duplicates so they can be removed manually in Brainstorm GUI. But only happened in very rare cases. 
+      - "HierarchicalPriors_PP07_filters.m" - notch filter, downsample, and create powerspectra for sanity check.
+      - "HierarchicalPriors_PP08_ICA.m" - run ICA for ocular and cardiac artifacts, separately for magneto- and gradiometers.
+      - "HierarchicalPriors_PP09_detectArtifacts.m" - automatic bad segment detection based on large amplitude at low frequency (1-7 Hz, i.e., blinks, movements, etc.), or high frequency (40-240 Hz; i.e., muscle activity) 
       - "HierarchicalPriors_PP10_epoch_singletrialDCcorrection.m" - epoch and single-trial baseline correction. Here there's also a visual inspection to check whether the automatically detected trials should indeed all be removed, e.g., sometimes a bad segment is in our padding windows, or might not be bad in our eyes. Those can be marked here.
       - "HierarchicalPriors_PP11_export2FT.m" - export from Brainstorm to Fieldtrip format.
       - "HierarchicalPriors_PP12_realign2photodiode.m" - realign single trials to photodiode. This script is called from PP11. 
