@@ -39,7 +39,7 @@ trialAmountPractice = 60;
 rng('default');
 rng('shuffle'); %seed random number generator
 
-experiment_name = 'Unpredict';
+experiment_name = 'HierarchicalPriors';
 subject_num = input('Please indicate subject number: ');
 practice = input('Is this a practice run? [1/0]');
 if practice
@@ -129,11 +129,11 @@ stimPos = CenterRectOnPointd(rect4stim, xCenter, yCenter);
 stimdir = [rootdir 'experiment\Stimuli\videos'];
 videos = dir(fullfile(stimdir, '*vid_120Hz.mp4'));
 if subject_num < 10 
-    fn_scramindices = fullfile(savedir,['Unpredict_subject0' num2str(subject_num) '_scramindices.mat']);
-    fn_backup = fullfile(savedir,'scramidx_backup',['Unpredict_subject0' num2str(subject_num) '_scramindices_final.mat']);
+    fn_scramindices = fullfile(savedir,['HierarchicalPriors_subject0' num2str(subject_num) '_scramindices.mat']);
+    fn_backup = fullfile(savedir,'scramidx_backup',['HierarchicalPriors_subject0' num2str(subject_num) '_scramindices_final.mat']);
 else
-    fn_scramindices = fullfile(savedir,['Unpredict_subject' num2str(subject_num) '_scramindices.mat']);
-    fn_backup = fullfile(savedir,'scramidx_backup',['Unpredict_subject' num2str(subject_num) '_scramindices_final.mat']);
+    fn_scramindices = fullfile(savedir,['HierarchicalPriors_subject' num2str(subject_num) '_scramindices.mat']);
+    fn_backup = fullfile(savedir,'scramidx_backup',['HierarchicalPriors_subject' num2str(subject_num) '_scramindices_final.mat']);
 end
 stimnum = length(videos);
 framenum = 5*refrate;
@@ -221,7 +221,7 @@ else
     numcatch = [16 8];%[16 8];
 end
 
-load([rootdir 'experiment\Unpredict_CatchTrialPool'],'CatchTrials');
+load([rootdir 'experiment\HierarchicalPriors_CatchTrialPool'],'CatchTrials');
 % Times in CatchTrials variable indicate roughly middle of larger motion, so occlusion can start a little earlier and end a little later:
 occlusionStart = 0.2;% seconds before manually picked middle of a larger motion
 CatchTrials(2,:) = num2cell(cell2mat(CatchTrials(2,:)) - occlusionStart);
