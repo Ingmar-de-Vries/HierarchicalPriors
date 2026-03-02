@@ -1,0 +1,33 @@
+% Run CAT12 cortical segmentation on individual anatomical scans, after opening the Brainstorm GUI with the correct project
+clearvars
+
+% Input files
+subjectKEY = {1 'MROS' ; 2 'MRSN' ; 3 'LANR' ; 4 'HLKR' ; 5 'LCBR' ; 6 'MRDG' ; 7 'SMHS' ; 8 'DBBU' ; 9	'PTCR' ; 10 'CRSA' ; 11 'CICE' ;...
+    12 'CIBN' ; 13 'FARN' ; 14 'RGBR' ; 15 'LRSU' ; 16 'NNGG' ; 17 'POML' ; 18 'LRVL' ; 19 'SLBG' ; 20 'AAMN' ; 21 'RTKM' ; 22 'SNMN' ;...
+    23 'GIMR' ; 24 'ATFC' ; 25 'MRVN' ; 26 'LCTY' ; 27 'JNFN' ; 28 'RBTM' ; 29 'SLML' ; 30 'ANDA' ; 31 'LLMS' ; 32 'AKAL' ; 33 'TTMD' ;...
+    34 'ANDL' ; 35 'NCGR' ; 36 'RTDC' ; 37 'PTCS' ; 38 'GGSI' ; 39 'AGCI' ; 40 'ANVC' ; 41 'DNCC' ; 42 'CAOM' ; 43 'MRBU'};
+
+SubjectNames = subjectKEY(:,2)';
+
+for isub = [2]
+    
+    sFiles = [];
+    
+    % Start a new report
+    bst_report('Start', sFiles);
+
+    % Process: Segment MRI with CAT12
+    sFiles = bst_process('CallProcess', 'process_segment_cat12', sFiles, [], ...
+        'subjectname', SubjectNames{isub}, ...
+        'nvertices',   15000, ...
+        'tpmnii',      {'', 'Nifti1'}, ...
+        'sphreg',      1, ...
+        'vol',         0, ...
+        'extramaps',   0, ...
+        'cerebellum',  0);
+
+    % Save and display report
+    ReportFile = bst_report('Save', sFiles);
+    bst_report('Open', ReportFile);
+
+end
