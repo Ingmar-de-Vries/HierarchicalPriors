@@ -81,7 +81,8 @@ The code in this GitHub repository is structured as follows:
       - "HierarchicalPriors_dRSA.m" - main analysis script, which is called from "HierarchicalPriors_master_dRSA.m"
       - "HierarchicalPriors_dRSA_con2con.m" - direct comparison between neural RDM of normal condition and neural RDM of inverted condition (i.e., Fig. 3 in paper)
       - "HierarchicalPriors_STATS.m" - run statistics on ROI-based dRSA results, and compute individual-participant peak latencies and magnitudes.
-      - "HierarchicalPriors_statsFT.m" - shell around Fieldtrip functions for running cluster-based permutation tests on dRSA lag-plot. This function is called from "HierarchicalPriors_STATS.m". See scripts for details. 
+      - "HierarchicalPriors_statsFT.m" - shell around Fieldtrip functions for running cluster-based permutation tests on dRSA lag-plot. This function is called from "HierarchicalPriors_STATS.m". See scripts for details.
+      - "HierarchicalPriors_STATS_bootstrap.m" - use bootstrapping to compare peak latencies between conditions. 
       - "HierarchicalPriors_PLOTS_dRSA.m" - plot ROI-based results.
       - "brewermap.m" - creates nice colormaps that are colorblind friendly. Not my code, for all colormaps and source code see: https://colorbrewer2.org/
       - "boundedline.m" - creates nice shading around lines, e.g., with a measure of distribution across subjects (here standard error). Not my code, for source code see https://github.com/kakearney/boundedline-pkg
