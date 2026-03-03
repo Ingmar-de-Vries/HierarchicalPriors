@@ -79,7 +79,6 @@ The code in this GitHub repository is structured as follows:
       - "HierarchicalPriors_checkAtlases.m" - just sanity check that correct atlas and inversion kernel will be selected in main analysis
       - "HierarchicalPriors_dRSA.m" - main analysis script, which is called from "HierarchicalPriors_master_dRSA.m"
       - "v2struct.m" - little helper function that allows you to unpack a struct in one go so all fields become variables in your workspace. It's called in many functions.
-      - "regressionBorder_smRDM30msec_xHz_condition.mat" - file containing regression borders used to regress out model itself to attenuate effects of model autocorrelation. These borders are determined by the simulations (see methods section in article and explanation in "HierarchicalPriors_dRSA.m" for details). 
       - "HierarchicalPriors_STATS_ERFdynamicRSA_ROIsource.m" - run statistics on ROI-based dRSA results, and compute peak latency and representational spread (RS) index. This function is called from main script "DynamicPredictions_pipeline.m". 
       - "HierarchicalPriors_runFTstats.m" - shell around Fieldtrip functions for running cluster-based permutation tests on 2D dRSA matrix or on averaged dRSA lag-plot. This function is called from "HierarchicalPriors_STATS_ERFdynamicRSA_ROIsource.m". See scripts for details. 
       - "HierarchicalPriors_PLOTS_dRSA.m" - plot ROI-based results, in article: figure 2a, 3, and S1.
@@ -90,4 +89,8 @@ The code in this GitHub repository is structured as follows:
   - Note that the simulations are also called from the main "HierarchicalPriors_master_dRSA.m" script. In the "simulations" subdirectory, you'll find the following scripts:
     - "cluster_shell_simulations.m" - used for sending analysis as parallel jobs to a computing cluster (e.g., with different subjects and ROIs in parallel).
     - "DHierarchicalPriors_dRSA_simulations.m" - run simulations.
-    - "HierarchicalPriors_PLOTS_dRSA_simulations.m" - plot simulations. 
+    - "HierarchicalPriors_PLOTS_dRSA_simulations.m" - plot simulations.
+   
+- Helper files
+  - In the "helperfiles" subdirectory, you'll find the following helper files to run the dRSA analysis:
+    - "regressionBorder_smRDM30msec_xHz_condition.mat" - file containing regression borders used to regress out model itself to attenuate effects of model autocorrelation. These borders are determined by the simulations (see methods section in article and explanation in "HierarchicalPriors_dRSA.m" for details). 
