@@ -78,6 +78,7 @@ The code in this GitHub repository is structured as follows:
       - "HierarchicalPriors_defineSourceROIs.m" - create ROIs based on (combinations of) parcels of HCP atlas.
       - "HierarchicalPriors_checkAtlases.m" - just sanity check that correct atlas and inversion kernel will be selected in main analysis
       - "HierarchicalPriors_dRSA.m" - main analysis script, which is called from "HierarchicalPriors_master_dRSA.m"
+      - "v2struct.m" - little helper function that allows you to unpack a struct in one go so all fields become variables in your workspace. It's called in many functions.
       - "regressionBorderPerModel_smRDM30msec.mat" - file containing regression borders used to regress out model itself to attenuate effects of model autocorrelation. These borders are determined by the simulations (see methods section in article and explanation in "HierarchicalPriors_dRSA.m" for details). 
       - "HierarchicalPriors_STATS_ERFdynamicRSA_ROIsource.m" - run statistics on ROI-based dRSA results, and compute peak latency and representational spread (RS) index. This function is called from main script "DynamicPredictions_pipeline.m". 
       - "modelautocorr_slopes.mat" - file containing dRSA curves resulting from PCR on simulated data. This is used to compute the representational spread (RS) index (see methods section in article and explanation in "DynamicPredictions_STATS_ERFdynamicRSA_ROIsource.m" for details).
