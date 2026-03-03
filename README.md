@@ -14,7 +14,7 @@ The code in this repository allows for exact replication of the dRSA pipeline as
 
 For details regarding this experiment, stimuli and analysis code, please see methods section of the article. Please contact me for any further questions at i.e.j.de.vries@gmail.com or ingmar.devries@unitn.it
 
-Note that the larger data files belonging to this repository are stored on a public OSF repository (DOI: 10.17605/OSF.IO/WJMVR; or look for Ingmar de Vries - HierarchicalPriors). The OSF repository includes: 
+Note that the larger data files belonging to this repository are stored on a public OSF repository (DOI: [10.17605/OSF.IO/WJMVR]; or look for Ingmar de Vries - HierarchicalPriors). The OSF repository includes: 
   - The 9 model RDMs used in the reported study.
   - It might in the future include MEG data of 1 example participant to test this code. See more information in the "dataset_readme.txt" file included in this repository. 
 
