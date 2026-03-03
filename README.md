@@ -16,7 +16,7 @@ For details regarding this experiment, stimuli and analysis code, please see met
 
 Note that the larger data files belonging to this repository are stored on a public OSF repository (DOI: TBD; or look for Ingmar de Vries - HierarchicalPriors). The OSF repository includes: 
   - MEG data of 1 example participant to test this code. See more information in the "dataset_readme.txt" file included in this repository. 
-  - The 18 model RDMs used in the reported study (9 for the normal and inverted conditions, 9 for the scrambled condition).
+  - The 9 model RDMs used in the reported study.
 
 Note that this custom-written code uses several functions from the Brainstorm (tested version: 3) and Fieldtrip (tested version: 20191113) toolboxes, and was written and tested in Matlab 2023b. Additionally, the first 2 MEG preprocessing steps made use of MNE-python (for automatic bad channel detection using MNE python’s find_bad_channels_maxwell algorithm and for detecting the middle run (in terms of head location) to which to spatially realign the other runs to during MaxFiltering), after which Maxfiltering was applied using Neuromag’s MaxFilter implementation (version 2.2) of Signal Source Separation (SSS). 
 
@@ -59,7 +59,7 @@ The code in this GitHub repository is structured as follows:
       - "HierarchicalPriors_PP13_computeInversionKernel.m" - apply minimum norm estimation (MNE) and store resulting inversion kernel to transform sensor level data to source level data outside of Brainstorm (which I do in the main dynamic RSA analysis script). 
 
   -	Create model RDMs
-    - The 18 model RDMs themselves can be found in the OSF repository. 
+    - The 9 model RDMs themselves can be found in the OSF repository. 
     - RDMs based on video data, kinematic marker data, and eyetracker data are created outside of the main "HierarchicalPriors_dRSA.m" script (see section "Run dRSA analysis" below), and if necessary up- or downsampled to 100 Hz. The pre-created RDMs therefore have size 14x14x500x500 (i.e., stim1 x stim2 x timestim1 x timestim2). This is done to save computation time in the dRSA pipeline, i.e., the RDMs only need to be loaded in, not computed each time the dRSA script is run. 
     - In the "modelRDMs" subdirectory, you'll find the following scripts:
       - "HierarchicalPriors_DynamicModelRDMs_eyeTracker.m" - create dynamic RDM of individual subject eyetracking data.
