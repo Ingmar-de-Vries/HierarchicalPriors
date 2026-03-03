@@ -64,9 +64,9 @@ The code in this GitHub repository is structured as follows:
     - In the "modelRDMs" subdirectory, you'll find the following scripts:
       - "HierarchicalPriors_DynamicModelRDMs_eyeTracker.m" - create dynamic RDM of individual subject eyetracking data.
       - "HierarchicalPriors_DynamicModelRDMs_pixelwise.m" - create dynamic RDM of smoothed grayscale pixelwise luminance values. 
-      - "HierarchicalPriors_video2vector.m" - create smoothed grayscale vector representation of videos. Called from "DynamicPredictions_DynamicModelRDMs_pixelwise.m".
+      - "HierarchicalPriors_video2vector.m" - create smoothed grayscale vector representation of videos. Called from "HierarchicalPriors_DynamicModelRDMs_pixelwise.m".
       - "HierarchicalPriors_DynamicModelRDMs_opticalflow.m" - create dynamic RDM of optical flow vectors.
-      - "HierarchicalPriors_video2opticalflow.m" - create optical flow vector representation of videos. Called from "DynamicPredictions_DynamicModelRDMs_opticalflow.m".
+      - "HierarchicalPriors_video2opticalflow.m" - create optical flow vector representation of videos. Called from "HierarchicalPriors_DynamicModelRDMs_opticalflow.m".
       - "HierarchicalPriors_DynamicModelRDMs_kinematic.m" - create 6 dynamic RDMs of kinematic marker data, i.e., view-dependent and view-invariant posture, motion and acceleration.
       - "procrustes_constrain_rotationZaxis_IdV.m" - modified version of Matlab's procrustes.m, which now constrains rotation to vertical (Z) axis, because that is how we define viewpoint invariant body posture, motion and acceleration. Note that my modified version is correct, but currently very time inefficient, effectively more than doubling the total computation time. This was a later modification and I'm sure I can find a much faster implementation. Feel free to have a look in the script and suggest a faster implementation! Called from "HierarchicalPriors_DynamicModelRDMs_kinematic.m".
       - "HierarchicalPriors_exampleFigureModels.m" - plots illustrations of the different models for a single frame of 2 videos. It was used for creating Figure S4 in the article. This script also contains information about where each of the 13 kinematic markers were located on the ballet dancer's body.
