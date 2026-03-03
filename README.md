@@ -91,9 +91,8 @@ The code in this GitHub repository is structured as follows:
 
 - Run dRSA simulations, and plotting
   - Note that the simulations are also called from the main "HierarchicalPriors_master_dRSA.m" script. In the "simulations" subdirectory, you'll find the following scripts:
-    - "cluster_shell_simulations.m" - used for sending analysis as parallel jobs to a computing cluster (e.g., with different subjects and ROIs in parallel).
-    - "DHierarchicalPriors_dRSA_simulations.m" - run simulations.
-    - "HierarchicalPriors_PLOTS_dRSA_simulations.m" - plot simulations.
+    - "HierarchicalPriors_dRSA_simulations.m" - run simulations.
+    - "HierarchicalPriors_PLOTS_simulations.m" - plot simulations.
    
 - Helper files
   - In the "helperfiles" subdirectory, you'll find the following helper files to run the dRSA analysis:
