@@ -14,9 +14,9 @@ The code in this repository allows for exact replication of the dRSA pipeline as
 
 For details regarding this experiment, stimuli and analysis code, please see methods section of the article. Please contact me for any further questions at i.e.j.de.vries@gmail.com or ingmar.devries@unitn.it
 
-Note that the larger data files belonging to this repository are stored on a public OSF repository (DOI: TBD; or look for Ingmar de Vries - HierarchicalPriors). The OSF repository includes: 
-  - MEG data of 1 example participant to test this code. See more information in the "dataset_readme.txt" file included in this repository. 
+Note that the larger data files belonging to this repository are stored on a public OSF repository (DOI: 10.17605/OSF.IO/WJMVR; or look for Ingmar de Vries - HierarchicalPriors). The OSF repository includes: 
   - The 9 model RDMs used in the reported study.
+  - It might in the future include MEG data of 1 example participant to test this code. See more information in the "dataset_readme.txt" file included in this repository. 
 
 Note that this custom-written code uses several functions from the Brainstorm (tested version: 3) and Fieldtrip (tested version: 20191113) toolboxes, and was written and tested in Matlab 2023b. Additionally, the first 2 MEG preprocessing steps made use of MNE-python (for automatic bad channel detection using MNE python’s find_bad_channels_maxwell algorithm and for detecting the middle run (in terms of head location) to which to spatially realign the other runs to during MaxFiltering), after which Maxfiltering was applied using Neuromag’s MaxFilter implementation (version 2.2) of Signal Source Separation (SSS). 
 
