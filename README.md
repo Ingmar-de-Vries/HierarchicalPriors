@@ -1,5 +1,3 @@
-UNDER CONSTRUCTION - UNDER CONSTRUCTION - UNDER CONSTRUCTION
-
 # Hierarchical priors enable neural prediction of perceived biological motion
 
 DOI code: TBD
