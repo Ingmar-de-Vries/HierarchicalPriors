@@ -78,6 +78,7 @@ The code in this GitHub repository is structured as follows:
       - "HierarchicalPriors_defineSourceROIs.m" - create ROIs based on (combinations of) parcels of HCP atlas.
       - "HierarchicalPriors_checkAtlases.m" - just sanity check that correct atlas and inversion kernel will be selected in main analysis
       - "HierarchicalPriors_dRSA.m" - main analysis script, which is called from "HierarchicalPriors_master_dRSA.m"
+      - "HierarchicalPriors_dRSA_con2con.m" - direct comparison between neural RDM of normal condition and neural RDM of inverted condition (i.e., Fig. 3 in paper)
       - "v2struct.m" - little helper function that allows you to unpack a struct in one go so all fields become variables in your workspace. It's called in many functions.
       - "HierarchicalPriors_STATS_ERFdynamicRSA_ROIsource.m" - run statistics on ROI-based dRSA results, and compute peak latency and representational spread (RS) index. This function is called from main script "DynamicPredictions_pipeline.m". 
       - "HierarchicalPriors_runFTstats.m" - shell around Fieldtrip functions for running cluster-based permutation tests on 2D dRSA matrix or on averaged dRSA lag-plot. This function is called from "HierarchicalPriors_STATS_ERFdynamicRSA_ROIsource.m". See scripts for details. 
