@@ -5,10 +5,10 @@ DOI code: TBD
 This repository contains Matlab code accompanying the article published in eLife:
 
 Ingmar EJ de Vries, Floris P de Lange, Moritz F Wurm (2026) Hierarchical priors enable neural prediction of perceived biological motion. eLife15:RP111118
-https://doi.org/10.7554/eLife.111118.1
+[Open link](https://doi.org/10.7554/eLife.111118.1)
 
 All data including the raw and preprocessed MEG and eye-tracking data that underly all results presented in the article, are available at the Radboud Data Repository at:
-https://doi.org/10.34973/c711-d628<img width="468" height="27" alt="image" src="https://github.com/user-attachments/assets/0cf9d553-18ec-4740-b4ec-38a4848a1ab2" />
+[Open link](https://doi.org/10.34973/c711-d628)
 
 If you use the data or the code here, please cite the above article. If you use the data, please also cite the above data repository. 
 
