@@ -2,11 +2,14 @@
 
 DOI code: TBD
 
-This repository contains Matlab code accompanying the scientific manuscript (preprint) available at 
+This repository contains Matlab code accompanying the article published in eLife:
 
-De Vries, I.E.J., De Lange, F.P., Wurm, M.F. Hierarchical priors enable neural prediction of perceived biological motion [https://doi.org/10.1038/s41467-023-39355-y](https://doi.org/10.1101/2025.10.09.681210)
+De Vries, I.E.J., De Lange, F.P., Wurm, M.F. Hierarchical priors enable neural prediction of perceived biological motion (https://doi.org/10.7554/eLife.111118.1)
 
-If you use the data on OSF or the code here, please cite the above article.
+All data including the raw and preprocessed MEG and eye-tracking data that underly all results presented in the article, are available at the Radboud Data Repository at:
+https://doi.org/10.34973/c711-d628<img width="468" height="27" alt="image" src="https://github.com/user-attachments/assets/0cf9d553-18ec-4740-b4ec-38a4848a1ab2" />
+
+If you use the data or the code here, please cite the above article. If you use the data, please also cite the above data repository. 
 
 The code in this repository allows for exact replication of the dRSA pipeline as presented in the article, but is also meant as inspiration for people interested in using dRSA to answer their own research questions. We're currently building a dRSA toolbox that will be shared on GitHub later 2026. In principle, dRSA can be applied to many different sensory modalities and contexts (e.g., naturalistic sound scenes, music, language), and on any signal with high enough temporal resolution (M/EEG, ECoG, eyetracking, etc.). Additionally, it should be straightforward to implement different dissimilarity measures for the neural and model RDMs, and a different similarity measure for the dRSA (i.e., here the principal component regression approach). We have found this similarity measure to be most effective for the current experiment, as tested with the simulations, but we have not extensively tested different dissimilarity measures.  
 
@@ -14,7 +17,6 @@ For details regarding this experiment, stimuli and analysis code, please see met
 
 Note that the larger data files belonging to this repository are stored on a public OSF repository (DOI: https://doi.org/10.17605/OSF.IO/WJMVR); or look for Ingmar de Vries - HierarchicalPriors). The OSF repository includes: 
   - The 9 model RDMs used in the reported study.
-  - It might in the future include MEG data of 1 example participant to test this code. See more information in the "dataset_readme.txt" file included in this repository. 
 
 Note that this custom-written code uses several functions from the Brainstorm (tested version: 3) and Fieldtrip (tested version: 20191113) toolboxes, and was written and tested in Matlab 2023b. Additionally, the first 2 MEG preprocessing steps made use of MNE-python (for automatic bad channel detection using MNE python’s find_bad_channels_maxwell algorithm and for detecting the middle run (in terms of head location) to which to spatially realign the other runs to during MaxFiltering), after which Maxfiltering was applied using Neuromag’s MaxFilter implementation (version 2.2) of Signal Source Separation (SSS). 
 
