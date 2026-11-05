@@ -16,7 +16,9 @@ The code in this repository allows for exact replication of the dRSA pipeline as
 
 For details regarding this experiment, stimuli and analysis code, please see methods section of the article. Please contact me for any further questions at i.e.j.de.vries@gmail.com or ingmar.devries@unitn.it
 
-Note that this custom-written code uses several functions from the Brainstorm (tested version: 3) and Fieldtrip (tested version: 20191113) toolboxes, and was written and tested in Matlab 2023b. Additionally, the first 2 MEG preprocessing steps made use of MNE-python (for automatic bad channel detection using MNE python’s find_bad_channels_maxwell algorithm and for detecting the middle run (in terms of head location) to which to spatially realign the other runs during MaxFiltering). The MNE-python code was written and tested in Spyder version: 6.1.5  (conda), Python version: 3.14.6 64-bit, Qt version: 5.15.15, PyQt5 version: 5.15.11. After this, Maxfiltering was applied using Neuromag’s MaxFilter implementation (version 2.2) of Signal Source Separation (SSS). 
+Note that this custom-written code uses several functions from the Brainstorm (tested version: 3) and Fieldtrip (tested version: 20191113) toolboxes, and was written and tested in Matlab 2023b. Additionally, the first 2 MEG preprocessing steps made use of MNE-python (for automatic bad channel detection using MNE python’s find_bad_channels_maxwell algorithm and for detecting the middle run (in terms of head location) to which to spatially realign the other runs during MaxFiltering). The MNE-python code was written and tested in Spyder version: 6.1.5  (conda), Python version: 3.14.6 64-bit, with the following dependencies: matplotlib, numpy, mne, path, transforms3d, scipy (exact versions could not be recovered due to updates since analysis).
+
+After this, Maxfiltering was applied using Neuromag’s MaxFilter implementation (version 2.2) of Signal Source Separation (SSS). 
 
 The code in this GitHub repository is structured as follows:
 
